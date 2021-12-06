@@ -1,5 +1,6 @@
 #include <stdlib.h>
 
+#include <stdio.h>
 int	ft_printf(const char *s, ...);
 int	write_buf(char *str, size_t len);
 
@@ -7,5 +8,5 @@ int	write_buf(char *str, size_t len);
 
 int main()
 {
-	ft_printf("canaille% de% premiere% qualite");
+	printf("%3d\n", 1888);
 }

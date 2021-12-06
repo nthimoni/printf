@@ -1,0 +1,48 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_flags.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/06 14:11:58 by nthimoni          #+#    #+#             */
+/*   Updated: 2021/12/06 14:23:53 by nthimoni         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "parse_flags.h"
+
+static int	type_specifier(char c, char *u)
+{
+	if (c == 'd' || c == 'i' || c == 'u' || c == 'x' || c == 'X'
+			|| c == 'c' || c == 's' || c == 'p' || c == '%')
+	{
+		*u = c;
+		return (1);
+	}
+	return (0);
+
+}
+
+char	*parse_flags(const char *str, t_flags *flags)
+{
+	while(str[i])
+	{
+		if (str[i] == '-')
+			flags->minus = 1;
+		else if (str[i] == '0')
+			flags->zero = 1;
+		else if (str[i] == '#')
+			flags->diez = 1;
+		else if (str[i] == ' ')
+			flags->space = 1;
+		else if (str[i] == '+')
+			flags->plus = 1;
+		else if (str[i] == '.')
+			flags->dot = 1;
+		else if (type_specifier(str[i], &flags->type))
+			return (str + i + 1);
+		i++;
+	}
+	return (str + i);
+}
