@@ -4,7 +4,11 @@ INCLUDE = include/
 
 SRCS = ft_printf.c\
 		write_buf.c\
-		parse_flags.c
+		parse_flags.c\
+		print_s.c\
+		print_c.c\
+		print_u.c\
+		print_di.c
 
 OBJS = $(addprefix $(OBJDIR), $(SRCS:.c=.o))
 

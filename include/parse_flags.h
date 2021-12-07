@@ -21,10 +21,10 @@ typedef struct s_flags
 	int		space;
 	int		plus;
 	int		dot;
-	int		deci;
+	int		size;
 	char	type;
 }	t_flags;
 
-int	parse_flags(const char *str, t_flags *flags);
+const char	*parse_flags(const char *str, t_flags *flags);
 
 #endif

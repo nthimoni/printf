@@ -46,9 +46,12 @@ int	write_buf(const char *str, size_t len)
 
 	if (!len)
 		return(flush(buffer));
-	if (len > PRINTF_BUFFER)
-		return (write(1, str, len));
 	wrote = 0;
+	if (len > PRINTF_BUFFER)
+	{
+		wrote += flush(buffer);
+		return (wrote + write(1, str, len));
+	}
 	while (len > 0)
 	{
 		to_copy = PRINTF_BUFFER - ft_strlen(buffer);

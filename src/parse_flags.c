@@ -24,8 +24,11 @@ static int	type_specifier(char c, char *u)
 
 }
 
-char	*parse_flags(const char *str, t_flags *flags)
+const char	*parse_flags(const char *str, t_flags *flags)
 {
+	int	i;
+
+	i = 0;
 	while(str[i])
 	{
 		if (str[i] == '-')

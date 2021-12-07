@@ -8,5 +8,4 @@ int	write_buf(char *str, size_t len);
 
 int main()
 {
-	printf("%3d\n", 1888);
 }

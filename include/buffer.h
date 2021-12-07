@@ -17,6 +17,8 @@
 #  define PRINTF_BUFFER 400
 # endif
 
+#include <stdlib.h>
+
 int	write_buf(const char *str, size_t len);
 
 #endif
