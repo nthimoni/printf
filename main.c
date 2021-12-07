@@ -8,4 +8,8 @@ int	write_buf(char *str, size_t len);
 
 int main()
 {
+	unsigned int a = 5;
+	int *u = &a;
+	printf("%8.5s\n", "okokok");
+	ft_printf("%8.5s\n", "okokok");
 }

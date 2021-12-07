@@ -1,44 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_di.c                                         :+:      :+:    :+:   */
+/*   print_xX.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/07 17:03:31 by nthimoni          #+#    #+#             */
-/*   Updated: 2021/12/07 18:44:22 by nthimoni         ###   ########.fr       */
+/*   Created: 2021/12/07 17:34:50 by nthimoni          #+#    #+#             */
+/*   Updated: 2021/12/07 17:43:46 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printers.h"
-#include "buffer.h"
 #include "parse_flags.h"
+#include "buffer.h"
 #include "bases.h"
-#include <stdio.h>
-void	print_di(int a, t_flags *flags)
-{
-	unsigned int	u;
-	unsigned int	len;
+#include "printers.h"
 
-	if (a < 0)
-		u = -a;
-	else
-		u = a;
-	len = ui_len(u, 10);
-	if (a < 0 || flags->plus || flags->space)
-		len++;
-	printf("%u\n", len);
-	if (!flags->minus && !flags->zero)
+void	print_xX(int i, t_flags *flags)
+{	
+	size_t			len;
+
+	len = ui_len((unsigned int)i, 16);
+	if (flags->diez)
+		len += 2;
+	if (!flags->minus)
 		print_n_char(' ', flags->size - len);
-	else if (!flags->minus && flags->zero)
-		print_n_char('0', flags->size - len);
-	if (a < 0)
-		write_buf("-", 1);
-	else if (flags->plus)
-		write_buf("+", 1);
-	else if (flags->space)
-		write_buf(" ", 1);
-	print_ui_base(u, BASE_10);
+	if (flags->diez && flags->type == 'x')
+		write_buf("0x", 2);
+	if (flags->diez && flags->type == 'X')
+		write_buf("0X", 2);
+	if (flags->type == 'x')
+		print_ui_base((unsigned int)i, BASE_16_LOW);
+	if (flags->type == 'X')
+		print_ui_base((unsigned int)i, BASE_16_UP);
 	if (flags->minus)
 		print_n_char(' ', flags->size - len);
 }

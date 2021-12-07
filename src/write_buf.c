@@ -6,13 +6,12 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 16:37:48 by nthimoni          #+#    #+#             */
-/*   Updated: 2021/12/06 17:41:38 by nthimoni         ###   ########.fr       */
+/*   Updated: 2021/12/07 17:06:17 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "buffer.h"
-
 
 static void	ft_subcat(char *dst, const char *src, size_t len)
 {
@@ -45,7 +44,7 @@ int	write_buf(const char *str, size_t len)
 	size_t			to_copy;
 
 	if (!len)
-		return(flush(buffer));
+		return (flush(buffer));
 	wrote = 0;
 	if (len > PRINTF_BUFFER)
 	{

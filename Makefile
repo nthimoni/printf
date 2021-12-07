@@ -8,7 +8,9 @@ SRCS = ft_printf.c\
 		print_s.c\
 		print_c.c\
 		print_u.c\
-		print_di.c
+		print_di.c\
+		print_p.c\
+		print_xX.c
 
 OBJS = $(addprefix $(OBJDIR), $(SRCS:.c=.o))
 
