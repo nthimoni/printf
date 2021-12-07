@@ -6,14 +6,24 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 16:37:48 by nthimoni          #+#    #+#             */
-/*   Updated: 2021/12/07 19:38:20 by nthimoni         ###   ########.fr       */
+/*   Updated: 2021/12/07 22:34:44 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "buffer.h"
 
-static void	ft_subcat(char *dst, const char *src, size_t len)
+static int	flush(char *buffer, size_t *len)
+{
+	int	wrote;
+
+	wrote = write(1, buffer, *len);
+	buffer[0] = '\0';
+	*len = 0;
+	return (wrote);
+}
+
+static int	ft_subcat(char *dst, const char *src, size_t len)
 {
 	size_t	prev_len;
 	size_t	i;
@@ -26,47 +36,29 @@ static void	ft_subcat(char *dst, const char *src, size_t len)
 		++i;
 	}
 	dst[prev_len + i] = '\0';
-}
-
-static int	flush(char *buffer)
-{
-	int	wrote;
-
-	wrote = write(1, buffer, ft_strlen(buffer));
-	buffer[0] = '\0';
-	return (wrote);
+	return (len);
 }
 
 int	write_buf(const char *str, size_t len)
 {
 	static char		buffer[PRINTF_BUFFER + 1];
-	size_t			to_copy;
-	static size_t	wrote;
-	int				tmp;
+	static size_t	wrote = 0;
+	static size_t	content_size = 0;
+	size_t			tmp;
 
 	if (!len)
 	{
-		wrote += flush(buffer);
+		wrote += flush(buffer, &content_size);
 		tmp = wrote;
 		wrote = 0;
 		return (tmp);
 	}
-	if (len > PRINTF_BUFFER)
+	if (len >= PRINTF_BUFFER - content_size)
 	{
-		wrote += flush(buffer);
+		wrote += flush(buffer, &content_size);
 		wrote += write(1, str, len);
-		return (0);
 	}
-	while (len > 0)
-	{
-		to_copy = PRINTF_BUFFER - ft_strlen(buffer);
-		if (to_copy > len)
-			to_copy = len;
-		ft_subcat(buffer, str, to_copy);
-		str += to_copy;
-		len -= to_copy;
-		if (ft_strlen(buffer) == PRINTF_BUFFER || ft_strchr(buffer, '\n'))
-			wrote += flush(buffer);
-	}
+	else
+		content_size += ft_subcat(buffer, str, len);
 	return (0);
 }

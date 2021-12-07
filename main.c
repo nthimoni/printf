@@ -8,7 +8,7 @@ int	write_buf(char *str, size_t len);
 
 int main()
 {
-	unsigned int a = 51;
+	unsigned int a = 58455;
 	int *u = &a;
 	printf("%8x\n", a);
 	ft_printf("%8x\n", a);
