@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 17:16:14 by nthimoni          #+#    #+#             */
-/*   Updated: 2021/12/07 19:08:52 by nthimoni         ###   ########.fr       */
+/*   Updated: 2021/12/07 19:18:02 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "parse_flags.h"
 
 #include <stdio.h>
-
+/*
 static void	printf_flags(t_flags *flags)
 {
 	printf("%d\n", flags->minus);
@@ -28,7 +28,7 @@ static void	printf_flags(t_flags *flags)
 	printf("%d\n", flags->size);
 	printf("%c\n", flags->type);
 }
-
+*/
 static void init_flags(t_flags *flags)
 {
 	flags->minus = 0;
@@ -73,7 +73,6 @@ int	ft_printf(const char *s, ...)
 		write_buf(s, flag_pos - s);
 		s = parse_flags(flag_pos, &flags);
 		dispatcher(&flags, ap);
-		printf_flags(&flags);
 		flag_pos = ft_strchr(s, '%');
 	}
 	write_buf(s, ft_strlen(s));

@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 17:03:31 by nthimoni          #+#    #+#             */
-/*   Updated: 2021/12/07 18:44:22 by nthimoni         ###   ########.fr       */
+/*   Updated: 2021/12/07 19:23:31 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	print_di(int a, t_flags *flags)
 	len = ui_len(u, 10);
 	if (a < 0 || flags->plus || flags->space)
 		len++;
-	printf("%u\n", len);
 	if (!flags->minus && !flags->zero)
 		print_n_char(' ', flags->size - len);
 	else if (!flags->minus && flags->zero)

@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 16:37:48 by nthimoni          #+#    #+#             */
-/*   Updated: 2021/12/07 17:06:17 by nthimoni         ###   ########.fr       */
+/*   Updated: 2021/12/07 19:38:20 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,22 @@ static int	flush(char *buffer)
 int	write_buf(const char *str, size_t len)
 {
 	static char		buffer[PRINTF_BUFFER + 1];
-	size_t			wrote;
 	size_t			to_copy;
+	static size_t	wrote;
+	int				tmp;
 
 	if (!len)
-		return (flush(buffer));
-	wrote = 0;
+	{
+		wrote += flush(buffer);
+		tmp = wrote;
+		wrote = 0;
+		return (tmp);
+	}
 	if (len > PRINTF_BUFFER)
 	{
 		wrote += flush(buffer);
-		return (wrote + write(1, str, len));
+		wrote += write(1, str, len);
+		return (0);
 	}
 	while (len > 0)
 	{
@@ -62,5 +68,5 @@ int	write_buf(const char *str, size_t len)
 		if (ft_strlen(buffer) == PRINTF_BUFFER || ft_strchr(buffer, '\n'))
 			wrote += flush(buffer);
 	}
-	return (wrote);
+	return (0);
 }
