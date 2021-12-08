@@ -5,6 +5,5 @@
 
 int main()
 {
-	int a = printf("%.s", "-");
-	printf("\n%d", a);
+	ft_printf("%+2d", 1);
 }
