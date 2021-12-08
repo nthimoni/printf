@@ -25,7 +25,7 @@ size_t	ui_len(unsigned long int u, size_t base_len)
 	i = 0;
 	while (u)
 	{
-		u /= base_len - 1;
+		u /= base_len;
 		i++;
 	}
 	return (i);
@@ -45,14 +45,20 @@ void	print_ui_base(unsigned long int val, const char *base)
 		write_buf(base + val, 1);
 }
 
-void	print_n_char(char c, int n)
+void	print_n_char(char c, int n, int sup_zero)
 {
 	int	i;
 
 	i = 0;
-	while (i < n)
+	while (i < n - sup_zero)
 	{
 		write_buf(&c, 1);
+		i++;
+	}
+	i = 0;
+	while (i < sup_zero)
+	{
+		write_buf("0", 1);
 		i++;
 	}
 }
@@ -65,16 +71,17 @@ void	print_u(unsigned int u, t_flags *flags)
 	len = ui_len(u, 10);
 	if (flags->plus || flags->space)
 		len++;
+	reg_dot(flags, len);
 	i = 0;
 	if (!flags->minus && !flags->zero)
-		print_n_char(' ', flags->size - len);
+		print_n_char(' ', flags->size - len, flags->dot - len);
 	if (!flags->minus && flags->zero)
-		print_n_char('0', flags->size - len);
+		print_n_char('0', flags->size - len, 0);
 	if (flags->plus)
 		write_buf("+", 1);
 	else if (flags->space)
 		write_buf(" ", 1);
 	print_ui_base(u, BASE_10);
 	if (flags->minus)
-		print_n_char(' ', flags->size - len);
+		print_n_char(' ', flags->size - len, 0);
 }

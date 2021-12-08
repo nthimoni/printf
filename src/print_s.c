@@ -29,6 +29,11 @@ void	print_s(const char *s, t_flags *flags)
 	int		i;
 	int		len;
 
+	if (!s)
+	{
+		write_buf("(null)", 6);
+		return;
+	}
 	len = bound_str_size(s, flags->dot);
 	i = 0;
 	while (!flags->minus && i < flags->size - len)

@@ -22,8 +22,11 @@ void	print_xX(int i, t_flags *flags)
 	len = ui_len((unsigned int)i, 16);
 	if (flags->diez)
 		len += 2;
-	if (!flags->minus)
-		print_n_char(' ', flags->size - len);
+	reg_dot(flags, len);
+	if (!flags->minus && !flags->zero)
+		print_n_char(' ', flags->size - len, flags->dot - len);
+	if (!flags->minus && flags->zero)
+		print_n_char('0', flags->size - len, 0);
 	if (flags->diez && flags->type == 'x')
 		write_buf("0x", 2);
 	if (flags->diez && flags->type == 'X')
@@ -33,5 +36,5 @@ void	print_xX(int i, t_flags *flags)
 	if (flags->type == 'X')
 		print_ui_base((unsigned int)i, BASE_16_UP);
 	if (flags->minus)
-		print_n_char(' ', flags->size - len);
+		print_n_char(' ', flags->size - len, 0);
 }

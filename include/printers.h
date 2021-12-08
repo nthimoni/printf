@@ -19,7 +19,8 @@
 
 void	print_ui_base(unsigned long int val, const char *base);
 size_t	ui_len(unsigned long int u, size_t base_len);
-void	print_n_char(char c, int n);
+void	print_n_char(char c, int n, int sup_zero);
+void	reg_dot(t_flags *flags, size_t len);
 
 void	print_s(const char *s, t_flags *flags);
 void	print_c(unsigned char c, t_flags *flags);

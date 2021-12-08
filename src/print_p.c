@@ -21,12 +21,17 @@ void	print_p(void *p, t_flags *flags)
 	size_t				len;
 
 	uli = (unsigned long int)p;
+	if (!uli)
+	{
+		write_buf("(nil)", 5);
+		return;
+	}
 	len = ui_len(uli, 16);
 	len += 2;
 	if (!flags->minus)
-		print_n_char(' ', flags->size - len);
+		print_n_char(' ', flags->size - len, 0);
 	write_buf("0x", 2);
 	print_ui_base(uli, BASE_16_LOW);
 	if (flags->minus)
-		print_n_char(' ', flags->size - len);
+		print_n_char(' ', flags->size - len, 0);
 }

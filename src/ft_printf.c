@@ -73,6 +73,7 @@ int	ft_printf(const char *s, ...)
 		write_buf(s, flag_pos - s);
 		s = parse_flags(flag_pos, &flags);
 		dispatcher(&flags, ap);
+		init_flags(&flags);
 		flag_pos = ft_strchr(s, '%');
 	}
 	write_buf(s, ft_strlen(s));
