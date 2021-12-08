@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 17:03:31 by nthimoni          #+#    #+#             */
-/*   Updated: 2021/12/08 18:03:06 by nthimoni         ###   ########.fr       */
+/*   Updated: 2021/12/08 20:02:26 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ void	print_before(t_flags *flags, int a, unsigned int len)
 	if (!flags->minus && flags->zero)
 		print_n_char('0', flags->size - flags->dot, 0);
 	if ((a < 0 || flags->space || flags->plus) 
-		&& !flags->minus && !flags->zero && flags->dot != -1)
+		&& !flags->minus && !flags->zero && flags->dot != (int)len)
 		print_n_char('0', flags->dot - len + 1, 0);
-	if (!(a < 0) && !flags->space && !flags->plus && flags->dot != -1)
+	if (!(a < 0) && !flags->space && !flags->plus && flags->dot != (int)len)
 		print_n_char('0', flags->dot - len, 0);
 }
 
