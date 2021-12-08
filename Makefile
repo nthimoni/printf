@@ -27,6 +27,8 @@ INCPATH = -I$(FTPATH) -I$(INCLUDE)
 
 all: $(NAME)
 
+bonus: $(NAME)
+
 libft:
 	make -C $(FTPATH)
 	cp $(FTPATH)$(FTLIB) $(NAME)

@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 17:16:14 by nthimoni          #+#    #+#             */
-/*   Updated: 2021/12/07 19:18:02 by nthimoni         ###   ########.fr       */
+/*   Updated: 2021/12/08 14:48:26 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,5 @@ int	ft_printf(const char *s, ...)
 	}
 	write_buf(s, ft_strlen(s));
 	va_end(ap);
-	return (write_buf(s, 0));
+	return (write_buf(NULL, 0));
 }

@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 16:37:48 by nthimoni          #+#    #+#             */
-/*   Updated: 2021/12/07 22:34:44 by nthimoni         ###   ########.fr       */
+/*   Updated: 2021/12/08 15:00:24 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,22 +39,6 @@ static int	ft_subcat(char *dst, const char *src, size_t len)
 	return (len);
 }
 
-static int	nb_unprntbl(const char *s, size_t len)
-{
-	size_t	i;
-	int		count;
-
-	i = 0;
-	count = 0;
-	while (i < len)
-	{
-		if (!ft_isprint(s[i]))
-			count++;
-		i++;
-	}
-	return (count);
-}
-
 int	write_buf(const char *str, size_t len)
 {
 	static char		buffer[PRINTF_BUFFER + 1];
@@ -62,7 +46,7 @@ int	write_buf(const char *str, size_t len)
 	static size_t	content_size = 0;
 	int				tmp;
 
-	if (!len)
+	if (!len && !str)
 	{
 		wrote += flush(buffer, &content_size);
 		tmp = wrote;
@@ -77,6 +61,5 @@ int	write_buf(const char *str, size_t len)
 	}
 	else
 		content_size += ft_subcat(buffer, str, len);
-	wrote -= nb_unprntbl(str, len);
 	return (0);
 }
