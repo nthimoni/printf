@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 16:37:48 by nthimoni          #+#    #+#             */
-/*   Updated: 2021/12/09 15:23:01 by nthimoni         ###   ########.fr       */
+/*   Updated: 2021/12/09 19:12:41 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int	write_buf(const char *str, size_t len)
 		wrote = 0;
 		return (tmp);
 	}
-
 	if (len >= PRINTF_BUFFER - content_size)
 	{
 		wrote += flush(buffer, &content_size);

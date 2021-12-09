@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 17:16:14 by nthimoni          #+#    #+#             */
-/*   Updated: 2021/12/08 20:03:26 by nthimoni         ###   ########.fr       */
+/*   Updated: 2021/12/09 19:10:53 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,8 @@
 #include "parse_flags.h"
 
 #include <stdio.h>
-/*
-static void	printf_flags(t_flags *flags)
-{
-	printf("%d\n", flags->minus);
-	printf("%d\n", flags->zero);
-	printf("%d\n", flags->diez);
-	printf("%d\n", flags->space);
-	printf("%d\n", flags->plus);
-	printf("%d\n", flags->dot);
-	printf("%d\n", flags->size);
-	printf("%c\n", flags->type);
-}
-*/
-static void init_flags(t_flags *flags)
+
+static void	init_flags(t_flags *flags)
 {
 	flags->minus = 0;
 	flags->zero = 0;
@@ -41,7 +29,7 @@ static void init_flags(t_flags *flags)
 	flags->type = ' ';
 }
 
-static void dispatcher(t_flags *flags, va_list ap)
+static void	dispatcher(t_flags *flags, va_list ap)
 {
 	if (flags->type == '%')
 		write_buf("%", 1);

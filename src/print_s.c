@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 17:07:28 by nthimoni          #+#    #+#             */
-/*   Updated: 2021/12/07 17:08:04 by nthimoni         ###   ########.fr       */
+/*   Updated: 2021/12/09 19:11:50 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	print_s(const char *s, t_flags *flags)
 	if (!s)
 	{
 		write_buf("(null)", 6);
-		return;
+		return ;
 	}
 	len = bound_str_size(s, flags->dot);
 	i = 0;
