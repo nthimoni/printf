@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 17:18:13 by nthimoni          #+#    #+#             */
-/*   Updated: 2021/12/07 18:19:45 by nthimoni         ###   ########.fr       */
+/*   Updated: 2021/12/09 18:22:54 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,6 @@ void	print_p(void *p, t_flags *flags)
 	size_t				len;
 
 	uli = (unsigned long int)p;
-	if (!uli)
-	{
-		write_buf("(nil)", 5);
-		return;
-	}
 	len = ui_len(uli, 16);
 	len += 2;
 	if (!flags->minus)
