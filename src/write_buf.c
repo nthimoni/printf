@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 16:37:48 by nthimoni          #+#    #+#             */
-/*   Updated: 2021/12/08 15:00:24 by nthimoni         ###   ########.fr       */
+/*   Updated: 2021/12/09 15:23:01 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,17 @@ static int	flush(char *buffer, size_t *len)
 	return (wrote);
 }
 
-static int	ft_subcat(char *dst, const char *src, size_t len)
+static int	ft_subcat(char *dst, const char *src, size_t len, size_t content)
 {
-	size_t	prev_len;
 	size_t	i;
 
-	prev_len = ft_strlen(dst);
 	i = 0;
 	while (i < len)
 	{
-		dst[prev_len + i] = src[i];
+		dst[content + i] = src[i];
 		++i;
 	}
-	dst[prev_len + i] = '\0';
+	dst[content + i] = '\0';
 	return (len);
 }
 
@@ -60,6 +58,6 @@ int	write_buf(const char *str, size_t len)
 		wrote += write(1, str, len);
 	}
 	else
-		content_size += ft_subcat(buffer, str, len);
+		content_size += ft_subcat(buffer, str, len, content_size);
 	return (0);
 }
