@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 17:34:50 by nthimoni          #+#    #+#             */
-/*   Updated: 2021/12/08 15:22:38 by nthimoni         ###   ########.fr       */
+/*   Updated: 2021/12/10 18:46:44 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,34 @@
 #include "bases.h"
 #include "printers.h"
 
-void	print_xX(int i, t_flags *flags)
-{	
-	size_t			len;
-
-	len = ui_len((unsigned int)i, 16);
-	if (flags->diez && (unsigned int)i != 0)
-		len += 2;
-	reg_dot(flags, len);
-	if (!flags->minus && !flags->zero)
-		print_n_char(' ', flags->size - len, flags->dot - len);
-	if (!flags->minus && flags->zero)
-		print_n_char('0', flags->size - len, 0);
+static void	print_before(t_flags *flags, unsigned int len, int i, int pref)
+{
+	if (!flags->minus && !flags->zero && flags->size != -1)
+		print_n_char(' ', flags->size - flags->dot - pref, 0);
 	if (flags->diez && flags->type == 'x' && (unsigned int)i != 0)
 		write_buf("0x", 2);
 	if (flags->diez && flags->type == 'X' && (unsigned int)i != 0)
 		write_buf("0X", 2);
+	if (!flags->minus && flags->zero && flags->size != -1)
+		print_n_char('0', flags->size - flags->dot - pref, 0);
+	print_n_char('0', flags->dot - len, 0);
+}
+
+void	print_x(int i, t_flags *flags)
+{	
+	size_t	len;
+	int		prefix;
+
+	prefix = 0;
+	if (flags->diez && i != 0)
+		prefix = 2;
+	len = ui_len((unsigned int)i, 16);
+	reg_dot(flags, len);
+	print_before(flags, len, i, prefix);
 	if (flags->type == 'x')
 		print_ui_base((unsigned int)i, BASE_16_LOW);
 	if (flags->type == 'X')
 		print_ui_base((unsigned int)i, BASE_16_UP);
 	if (flags->minus)
-		print_n_char(' ', flags->size - len, 0);
+		print_n_char(' ', flags->size - flags->dot - prefix, 0);
 }

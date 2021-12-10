@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 17:06:34 by nthimoni          #+#    #+#             */
-/*   Updated: 2021/12/07 19:01:49 by nthimoni         ###   ########.fr       */
+/*   Updated: 2021/12/10 19:26:26 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,24 +63,24 @@ void	print_n_char(char c, int n, int sup_zero)
 	}
 }
 
+static void	print_before(t_flags *flags, unsigned int len)
+{
+	if (!flags->minus && !flags->zero && flags->size != -1)
+		print_n_char(' ', flags->size - flags->dot, 0);
+	if (!flags->minus && flags->zero && flags->size != -1)
+		print_n_char('0', flags->size - flags->dot, 0);
+	print_n_char('0', flags->dot - len, 0);
+}
+
 void	print_u(unsigned int u, t_flags *flags)
 {
 	int		i;
 	size_t	len;
 
 	len = ui_len(u, 10);
-	if (flags->plus || flags->space)
-		len++;
 	reg_dot(flags, len);
 	i = 0;
-	if (!flags->minus && !flags->zero)
-		print_n_char(' ', flags->size - len, flags->dot - len);
-	if (!flags->minus && flags->zero)
-		print_n_char('0', flags->size - len, 0);
-	if (flags->plus)
-		write_buf("+", 1);
-	else if (flags->space)
-		write_buf(" ", 1);
+	print_before(flags, len);
 	print_ui_base(u, BASE_10);
 	if (flags->minus)
 		print_n_char(' ', flags->size - len, 0);

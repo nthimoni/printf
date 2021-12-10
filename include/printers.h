@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 16:11:28 by nthimoni          #+#    #+#             */
-/*   Updated: 2021/12/07 18:20:00 by nthimoni         ###   ########.fr       */
+/*   Updated: 2021/12/10 16:11:28 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ void	print_c(unsigned char c, t_flags *flags);
 void	print_u(unsigned int u, t_flags *flags);
 void	print_di(int i, t_flags *flags);
 void	print_p(void *p, t_flags *flags);
-void	print_xX(int i, t_flags *flags);
+void	print_x(int i, t_flags *flags);
 
 #endif

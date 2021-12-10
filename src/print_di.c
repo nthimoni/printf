@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 17:03:31 by nthimoni          #+#    #+#             */
-/*   Updated: 2021/12/09 19:11:11 by nthimoni         ###   ########.fr       */
+/*   Updated: 2021/12/10 19:07:02 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ void	reg_dot(t_flags *flags, size_t len)
 		flags->dot = len;
 }
 
-void	print_before(t_flags *flags, int a, unsigned int len, int sign)
+static void	print_before(t_flags *flags, int a, unsigned int len, int sign)
 {
-	if (!flags->minus && !flags->zero && flags->size != -1)
+	if (!flags->minus && (!flags->zero)
+		&& flags->size != -1)
 		print_n_char(' ', flags->size - flags->dot - sign, 0);
 	if (a < 0)
 		write_buf("-", 1);
@@ -33,7 +34,7 @@ void	print_before(t_flags *flags, int a, unsigned int len, int sign)
 		write_buf("+", 1);
 	else if (flags->space)
 		write_buf(" ", 1);
-	if (!flags->minus && flags->zero && flags->size != -1)
+	if (!flags->minus && (flags->zero) && flags->size != -1)
 		print_n_char('0', flags->size - flags->dot - sign, 0);
 	print_n_char('0', flags->dot - len, 0);
 }

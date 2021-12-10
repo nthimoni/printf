@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 17:16:14 by nthimoni          #+#    #+#             */
-/*   Updated: 2021/12/09 19:10:53 by nthimoni         ###   ########.fr       */
+/*   Updated: 2021/12/10 16:11:38 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	dispatcher(t_flags *flags, va_list ap)
 	else if (flags->type == 'u')
 		print_u(va_arg(ap, unsigned int), flags);
 	else if (flags->type == 'x' || flags->type == 'X')
-		print_xX(va_arg(ap, int), flags);
+		print_x(va_arg(ap, int), flags);
 }
 
 int	ft_printf(const char *s, ...)
