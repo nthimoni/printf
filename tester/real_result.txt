@@ -16,4 +16,11 @@
 16. +000000000034293
 17. +0000000012
 18. okok
-19. ca marche mon pote20. 
+19. ca marche mon pote
+20. okok
+21.                     
+22. (null)    
+23.     (null)
+24.           
+25. 
+26. (null)

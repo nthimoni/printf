@@ -1,3 +1,5 @@
+#define NULLSTR ((char *)0)
+
 #define TEST_1 "1. %+9d \n", 85
 #define TEST_2 "2. % 9d \n", 85
 #define TEST_3 "3. %0+9d \n", 85
@@ -16,14 +18,14 @@
 #define TEST_16 "16. %+016d\n", 34293
 #define TEST_17 "17. %-+10.10d\n", 12
 #define TEST_18 "18. %s\n", "okok"
-#define TEST_19 "19. ca marche mon pote"
-#define TEST_20 "20. %.s", "okok"
-#define TEST_21 ""
-#define TEST_22 ""
-#define TEST_23 ""
-#define TEST_24 ""
-#define TEST_25 ""
-#define TEST_26 ""
+#define TEST_19 "19. ca marche mon pote\n"
+#define TEST_20 "20. %.8s\n", "okok"
+#define TEST_21 "21. %20.3s\n", NULLSTR
+#define TEST_22 "22. %-10s\n", NULLSTR
+#define TEST_23 "23. %10s\n", NULLSTR
+#define TEST_24 "24. %10.s\n", NULLSTR
+#define TEST_25 "25. %.s\n", NULLSTR
+#define TEST_26 "26. %4.6s\n", NULLSTR
 #define TEST_27 ""
 #define TEST_28 ""
 #define TEST_29 ""
