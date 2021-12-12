@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 14:11:58 by nthimoni          #+#    #+#             */
-/*   Updated: 2021/12/08 19:57:29 by nthimoni         ###   ########.fr       */
+/*   Updated: 2021/12/12 19:40:54 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ const char	*parse_flags(const char *str, t_flags *flags)
 	{
 		if (str[i] == '-')
 			flags->minus = 1;
-		else if (str[i] == '0')
+		else if (str[i] == '0' && flags->dot == -1)
 			flags->zero = 1;
 		else if (str[i] == '#')
 			flags->diez = 1;
@@ -58,7 +58,10 @@ const char	*parse_flags(const char *str, t_flags *flags)
 		else if (str[i] == '+')
 			flags->plus = 1;
 		else if (str[i] == '.')
+		{
+			flags->zero = 0;
 			flags->dot = 0;
+		}
 		else if (type_specifier(str[i], &flags->type))
 			return (str + i + 1);
 		else if (ft_isdigit(str[i]))

@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 17:07:28 by nthimoni          #+#    #+#             */
-/*   Updated: 2021/12/10 21:29:27 by nthimoni         ###   ########.fr       */
+/*   Updated: 2021/12/12 20:05:32 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,11 @@ static int	null_str(const char *str, t_flags *flags)
 	if (str)
 		return (0);
 	if (flags->dot != -1 && flags->size == -1)
+	{
+		if (flags->dot >= 6)
+			write_buf("(null)", 6);
 		return (1);
+	}
 	if (flags->dot != -1 && flags->size != -1 && flags->dot < 6)
 	{
 		print_n_char(' ', flags->size, 0);

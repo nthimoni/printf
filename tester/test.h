@@ -26,7 +26,7 @@
 #define TEST_24 "24. %10.s\n", NULLSTR
 #define TEST_25 "25. %.s\n", NULLSTR
 #define TEST_26 "26. %4.6s\n", NULLSTR
-#define TEST_27 ""
-#define TEST_28 ""
+#define TEST_27 "27. %.d", 0
+#define TEST_28 "28. %5%"
 #define TEST_29 ""
 #define TEST_30 ""
