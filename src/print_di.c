@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 17:03:31 by nthimoni          #+#    #+#             */
-/*   Updated: 2021/12/12 19:55:59 by nthimoni         ###   ########.fr       */
+/*   Updated: 2021/12/12 21:06:20 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,22 +45,21 @@ void	print_di(int a, t_flags *flags)
 	unsigned int	len;
 	int				sign;
 
-	if (!a && flags->dot == 0)
-	{
-		print_n_char(' ', flags->size, 0);
-		return ;
-	}
+
 	if (a < 0)
 		u = -a;
 	else
 		u = a;
 	len = ui_len(u, 10);
+	if (!a && flags->dot == 0)
+		len--;
 	sign = 0;
 	if (a < 0 || flags->plus || flags->space)
 		sign = 1;
 	reg_dot(flags, len);
 	print_before(flags, a, len, sign);
-	print_ui_base(u, BASE_10);
+	if (u || flags->dot != 0)
+		print_ui_base(u, BASE_10);
 	if (flags->minus)
 		print_n_char(' ', flags->size - flags->dot - sign, 0);
 }

@@ -18,10 +18,10 @@
 18. okok
 19. ca marche mon pote
 20. okok
-21.                     
+21.                  (nu
 22. (null)    
 23.     (null)
 24.           
 25. 
 26. (null)
-27. 28. %
+27. 28.     %
