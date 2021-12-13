@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 17:03:31 by nthimoni          #+#    #+#             */
-/*   Updated: 2021/12/12 21:06:20 by nthimoni         ###   ########.fr       */
+/*   Updated: 2021/12/13 17:07:39 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	print_di(int a, t_flags *flags)
 	unsigned int	u;
 	unsigned int	len;
 	int				sign;
-
 
 	if (a < 0)
 		u = -a;

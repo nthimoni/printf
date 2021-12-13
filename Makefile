@@ -38,6 +38,7 @@ $(NAME): libft $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 
 $(OBJDIR)%.o: $(SRCDIR)%.c
+	@mkdir -p $(@D)
 	$(CC) -c $(CFLAGS) $(INCPATH) $< -o $@
 
 clean:

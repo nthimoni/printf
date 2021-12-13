@@ -6,7 +6,7 @@
 /*   By: nthimoni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 14:11:58 by nthimoni          #+#    #+#             */
-/*   Updated: 2021/12/12 19:40:54 by nthimoni         ###   ########.fr       */
+/*   Updated: 2021/12/13 17:11:54 by nthimoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ static int	read_nb(t_flags *flags, const char *str)
 	}
 }
 
+static void	process_dot(t_flags *flags)
+{
+	flags->zero = 0;
+	flags->dot = 0;
+}
+
 const char	*parse_flags(const char *str, t_flags *flags)
 {
 	int	i;
@@ -58,10 +64,7 @@ const char	*parse_flags(const char *str, t_flags *flags)
 		else if (str[i] == '+')
 			flags->plus = 1;
 		else if (str[i] == '.')
-		{
-			flags->zero = 0;
-			flags->dot = 0;
-		}
+			process_dot(flags);
 		else if (type_specifier(str[i], &flags->type))
 			return (str + i + 1);
 		else if (ft_isdigit(str[i]))
